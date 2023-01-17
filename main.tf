@@ -1,6 +1,6 @@
 module "vpc" {
   source  = "aws-ia/vpc/aws"
-  version = ">= 3.0.1"
+  version = ">= 3.1.0"
 
   name       = var.vpc_name
   cidr_block = var.vpc_cidr_block
@@ -37,7 +37,7 @@ locals {
 
 module "s3" {
   source  = "terraform-aws-modules/s3-bucket/aws"
-  version = ">= 3.3.0"
+  version = ">= 3.6.0"
 
   bucket_prefix = var.s3_bucket_prefix
   acl           = "private"
