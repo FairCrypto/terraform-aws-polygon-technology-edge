@@ -68,7 +68,7 @@ resource "aws_security_group_rule" "allow_alb_http" {
   security_group_id = aws_security_group.json_rpc_alb.id
   to_port           = 80
   type              = "ingress"
-  cidr_blocks       = ["0.0.0.0/0"]
+  cidr_blocks       = [var.rpc_cidr_allowed]
 }
 #tfsec:ignore:aws-vpc-no-public-ingress-sgr
 resource "aws_security_group_rule" "allow_alb_https" {
@@ -78,5 +78,5 @@ resource "aws_security_group_rule" "allow_alb_https" {
   security_group_id = aws_security_group.json_rpc_alb.id
   to_port           = 443
   type              = "ingress"
-  cidr_blocks       = ["0.0.0.0/0"]
+  cidr_blocks       = [var.rpc_cidr_allowed]
 }

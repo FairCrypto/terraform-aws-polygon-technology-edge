@@ -212,3 +212,13 @@ variable "lambda_function_zip" {
   description = "The lambda function code in zip archive"
   default     = "https://raw.githubusercontent.com/Trapesys/polygon-edge-assm/aws-lambda/artifacts/main.zip"
 }
+variable "rpc_cidr_allowed" {
+  type        = string
+  description = "The CIDR range that is allowed to access the RPC port"
+  default     = "0.0.0.0/0"
+}
+variable "rpc_alb_internal" {
+  type        = bool
+  description = "Whether the ALB should be internal"
+  default     = false
+}

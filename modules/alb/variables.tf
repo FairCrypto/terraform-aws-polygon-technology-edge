@@ -30,3 +30,8 @@ variable "alb_ssl_certificate" {
   type        = string
   description = "The SSL certificate ARN for JSON-RPC load balancer"
 }
+variable "rpc_alb_internal" {
+  type        = bool
+  description = "Whether the ALB should be internal"
+  default     = false
+}

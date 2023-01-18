@@ -32,7 +32,6 @@ locals {
   private_azs = {
     for idx, az_name in local.azs : idx => az_name
   }
-
 }
 
 module "s3" {
@@ -55,6 +54,7 @@ module "security" {
   internal_sec_gr_name_tag = var.internal_sec_gr_name_tag
   alb_sec_gr_name_tag      = var.alb_sec_gr_name_tag
   lambda_function_name     = var.lambda_function_name
+  rpc_cidr_allowed         = var.rpc_cidr_allowed
 }
 
 module "instances" {
@@ -124,13 +124,12 @@ module "alb" {
   vpc_id              = module.vpc.vpc_attributes.id
   node_ids            = [for _, instance in module.instances : instance.instance_id]
   alb_ssl_certificate = var.alb_ssl_certificate
+  rpc_alb_internal    = var.rpc_alb_internal
 
   nodes_alb_name_prefix             = var.nodes_alb_name_prefix
   nodes_alb_name_tag                = var.nodes_alb_name_tag
   nodes_alb_targetgroup_name_prefix = var.nodes_alb_targetgroup_name_prefix
 }
-
-
 
 resource "null_resource" "download_package" {
   triggers = {
@@ -160,3 +159,4 @@ module "lambda" {
   number_of_policy_jsons = 2
   policy_jsons           = [data.aws_iam_policy_document.genesis_s3.json, data.aws_iam_policy_document.genesis_ssm.json]
 }
+

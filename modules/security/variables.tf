@@ -37,3 +37,9 @@ variable "lambda_function_name" {
   type        = string
   description = "The name of the chain initialization Lambda function"
 }
+
+variable "rpc_cidr_allowed" {
+  type        = string
+  description = "The CIDR range that is allowed to access the RPC port"
+  default     = "0.0.0.0/0"
+}

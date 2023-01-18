@@ -2,7 +2,7 @@
 resource "aws_lb" "polygon_nodes" {
   name_prefix = var.nodes_alb_name_prefix
   #tfsec:ignore:aws-elb-alb-not-public
-  internal                   = false
+  internal                   = var.rpc_alb_internal
   load_balancer_type         = "application"
   subnets                    = var.public_subnets
   security_groups            = [var.alb_sec_group]
