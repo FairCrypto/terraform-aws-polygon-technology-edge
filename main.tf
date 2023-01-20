@@ -76,6 +76,7 @@ module "instances" {
   instance_interface_name_tag = var.instance_interface_name_tag
   chain_data_ebs_volume_size  = var.chain_data_ebs_volume_size
   chain_data_ebs_name_tag     = var.chain_data_ebs_name_tag
+  key_name                    = var.key_name
 
   depends_on = [module.lambda]
 }

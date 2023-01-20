@@ -45,8 +45,13 @@ variable "chain_data_ebs_name_tag" {
   description = "The name of the chain data EBS volume. Default: Polygon_Edge_chain_data_ebs_volume"
 }
 
-
 variable "instance_iam_role" {
   type        = string
   description = "The IAM role to attach to the instance"
+}
+
+variable "key_name" {
+  type        = string
+  description = "The name of the key pair that should be used for the instance"
+  default     = ""
 }

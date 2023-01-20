@@ -237,4 +237,8 @@ variable "rpc_alb_internal" {
   description = "Whether the ALB should be internal"
   default     = false
 }
-
+variable "key_name" {
+  type        = string
+  description = "The name of the key pair that should be used for the instance"
+  default     = ""
+}
