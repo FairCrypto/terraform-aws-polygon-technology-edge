@@ -80,3 +80,21 @@ resource "aws_security_group_rule" "allow_alb_https" {
   type              = "ingress"
   cidr_blocks       = [var.rpc_cidr_allowed]
 }
+resource "aws_security_group_rule" "allow_prometheus" {
+  description       = "Allow Traffic to Prometheus Node Exporter Port"
+  from_port         = var.node_exporter_port
+  to_port           = var.node_exporter_port
+  protocol          = "tcp"
+  security_group_id = aws_security_group.polygon_internal.id
+  type              = "ingress"
+  cidr_blocks       = [var.metrics_cidr_allowed]
+}
+resource "aws_security_group_rule" "allow_prometheus_poly_edge" {
+  description       = "Allow Traffic to Polygon Edge Metrics Port"
+  from_port         = var.polygon_edge_metrics_port
+  to_port           = var.polygon_edge_metrics_port
+  protocol          = "tcp"
+  security_group_id = aws_security_group.polygon_internal.id
+  type              = "ingress"
+  cidr_blocks       = [var.metrics_cidr_allowed]
+}

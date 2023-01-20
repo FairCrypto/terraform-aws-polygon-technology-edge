@@ -46,15 +46,18 @@ module "s3" {
 module "security" {
   source = "./modules/security"
 
-  vpc_id                   = module.vpc.vpc_attributes.id
-  account_id               = data.aws_caller_identity.current.account_id
-  s3_shared_bucket_name    = module.s3.s3_bucket_id
-  ssm_parameter_id         = var.ssm_parameter_id
-  region                   = data.aws_region.current.name
-  internal_sec_gr_name_tag = var.internal_sec_gr_name_tag
-  alb_sec_gr_name_tag      = var.alb_sec_gr_name_tag
-  lambda_function_name     = var.lambda_function_name
-  rpc_cidr_allowed         = var.rpc_cidr_allowed
+  vpc_id                    = module.vpc.vpc_attributes.id
+  account_id                = data.aws_caller_identity.current.account_id
+  s3_shared_bucket_name     = module.s3.s3_bucket_id
+  ssm_parameter_id          = var.ssm_parameter_id
+  region                    = data.aws_region.current.name
+  internal_sec_gr_name_tag  = var.internal_sec_gr_name_tag
+  alb_sec_gr_name_tag       = var.alb_sec_gr_name_tag
+  lambda_function_name      = var.lambda_function_name
+  rpc_cidr_allowed          = var.rpc_cidr_allowed
+  metrics_cidr_allowed      = var.metrics_cidr_allowed
+  node_exporter_port        = var.node_exporter_port
+  polygon_edge_metrics_port = var.polygon_edge_metrics_port
 }
 
 module "instances" {

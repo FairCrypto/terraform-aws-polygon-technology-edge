@@ -217,8 +217,24 @@ variable "rpc_cidr_allowed" {
   description = "The CIDR range that is allowed to access the RPC port"
   default     = "0.0.0.0/0"
 }
+variable "metrics_cidr_allowed" {
+  type        = string
+  description = "The CIDR range that is allowed to access the metrics port"
+  default     = ""
+}
+variable "node_exporter_port" {
+  type        = string
+  description = "The port that node_exporter is listening on"
+  default     = 9100
+}
+variable "polygon_edge_metrics_port" {
+  type        = string
+  description = "The port that polygon edge metrics is listening on"
+  default     = 9090
+}
 variable "rpc_alb_internal" {
   type        = bool
   description = "Whether the ALB should be internal"
   default     = false
 }
+
