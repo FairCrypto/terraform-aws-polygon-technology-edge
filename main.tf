@@ -103,7 +103,7 @@ module "user_data" {
   prometheus_address = var.prometheus_address
   block_gas_target   = var.block_gas_target
   nat_address        = var.nat_address
-  dns_name           = var.dns_name
+  dns_name           = format("%s.%s", var.chain_name, var.domain_name)
   price_limit        = var.price_limit
 
   #  # Chain configuration
@@ -164,3 +164,11 @@ module "lambda" {
   policy_jsons           = [data.aws_iam_policy_document.genesis_s3.json, data.aws_iam_policy_document.genesis_ssm.json]
 }
 
+module "dns" {
+  source = "./modules/dns"
+  instance_dns_names = values(module.instances)[*].instance_dns_name
+  rpc_dns_name       = module.alb.dns_name
+  zone_id            = var.zone_id
+  domain_name        = var.domain_name
+  chain_name         = var.chain_name
+}

@@ -160,11 +160,6 @@ variable "nat_address" {
   description = "Sets the NAT address for the networking package"
   default     = ""
 }
-variable "dns_name" {
-  type        = string
-  description = "Sets the DNS name for the network package"
-  default     = ""
-}
 variable "price_limit" {
   type        = string
   description = "Sets minimum gas price limit to enforce for acceptance into the pool"
@@ -241,4 +236,12 @@ variable "key_name" {
   type        = string
   description = "The name of the key pair that should be used for the instance"
   default     = ""
+}
+variable "zone_id" {
+  type        = string
+  description = "The zone id of the domain"
+}
+variable "domain_name" {
+  type        = string
+  description = "The domain name"
 }
