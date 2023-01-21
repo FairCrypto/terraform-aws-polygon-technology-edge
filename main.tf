@@ -58,6 +58,7 @@ module "security" {
   metrics_cidr_allowed      = var.metrics_cidr_allowed
   node_exporter_port        = var.node_exporter_port
   polygon_edge_metrics_port = var.polygon_edge_metrics_port
+  ssh_cidr_allowed          = var.ssh_cidr_allowed
 }
 
 module "instances" {

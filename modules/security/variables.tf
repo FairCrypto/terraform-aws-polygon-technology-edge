@@ -44,10 +44,14 @@ variable "rpc_cidr_allowed" {
   default     = "0.0.0.0/0"
 }
 
+variable "ssh_cidr_allowed" {
+  type        = string
+  description = "The CIDR range that is allowed to access the SSH port"
+}
+
 variable "metrics_cidr_allowed" {
   type        = string
   description = "The CIDR range that is allowed to access the metrics port"
-  default     = ""
 }
 
 variable "node_exporter_port" {

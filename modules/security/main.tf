@@ -98,3 +98,12 @@ resource "aws_security_group_rule" "allow_prometheus_poly_edge" {
   type              = "ingress"
   cidr_blocks       = [var.metrics_cidr_allowed]
 }
+resource "aws_security_group_rule" "allow_ssh" {
+  description       = "allow ssh"
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+  security_group_id = aws_security_group.polygon_internal.id
+  type              = "ingress"
+  cidr_blocks       = [var.ssh_cidr_allowed]
+}
