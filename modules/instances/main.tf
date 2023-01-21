@@ -5,6 +5,7 @@ resource "aws_instance" "polygon_edge_instance" {
   user_data_base64     = var.user_data_base64
   availability_zone    = var.az
   iam_instance_profile = var.instance_iam_role
+  key_name             = var.key_name
 
   metadata_options {
     http_tokens   = "required"
